@@ -1,4 +1,4 @@
-import assets from '../assets/assets'
+import assets, { userDummyData } from '../assets/assets'
 import { useNavigate } from 'react-router-dom'
 
 const Sidebar = ({ selectedUser, setSelectedUser }) => {
@@ -7,6 +7,7 @@ const Sidebar = ({ selectedUser, setSelectedUser }) => {
     <div className={`bg-orange-300/30 h-full p-5 rounded-r-xl overflow-y-scroll text-white
     ${selectedUser ? 'max-md:hidden' : ''}`}>
       <div className='pb-5'>
+        {/* logo  and menu btn */}
         <div className='flex justify-between items-center'>
           <img src={assets.logo} alt="Logo" className='max-w-40' />
           <div className='relative py-2 group bg-orange-300 border border-orange-600 rounded-2xl'>
@@ -18,6 +19,38 @@ const Sidebar = ({ selectedUser, setSelectedUser }) => {
             </div>
           </div>
         </div>
+
+        {/* search */}
+        <div className='bg-orange-200 rounded-full flex items-center gap-2 px-4 py-3 mt-5'>
+          <img src={assets.search_icon} alt="Search" className='w-3' />
+          <input type="text" className='bg-transparent border-none outline-none text-orange-800 text-xs placeholder-orange-400 flex-1' placeholder='Search User...' />
+        </div>
+      </div>
+
+      {/* users */}
+      <div className='flex flex-col'>
+        {
+          userDummyData.map((user, index) => (
+            <div key={index} onClick={() => {setSelectedUser(user)}}  className={`relative flex items-center gap-2 p-2 pl-4 rounded cursor-pointer max-sm:text-sm
+            ${selectedUser?._id === user._id && 'bg-amber-700/50'}`}>
+              <img src={user.profilePic || assets.avatar_icon} alt="user" className='w-[35px] aspect-[1/1] rounded-full' />
+              <div className='flex flex-col leading-5'>
+                <p className='text-orange-500'>{user.fullName}</p>
+                {
+                  index < 3
+                    ? <p className='text-green-500 text-xs'>Online</p>
+                    : <p className='text-neutral-500 text-xs'>Offline</p>
+                }
+              </div>
+              {
+                index > 2 &&
+                <div className='absolute top-4 right-4 text-xs w-5 h-5 flex justify-center items-center rounded-full bg-orange-500/50'>
+                  {index}
+                </div>
+              }
+            </div>
+          ))
+        }
       </div>
     </div>
   )
