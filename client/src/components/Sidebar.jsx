@@ -10,9 +10,9 @@ const Sidebar = ({ selectedUser, setSelectedUser }) => {
         {/* logo  and menu btn */}
         <div className='flex justify-between items-center'>
           <img src={assets.logo} alt="Logo" className='max-w-40' />
-          <div className='relative py-2 group bg-orange-300 border border-orange-600 rounded-2xl'>
-            <img src={assets.menu_icon} alt="Menu" className='max-h-5 cursor-pointer' />
-            <div className='absolute top-full right-0 z-20 w-32 p-5 rounded-md bg-orange-300 border border-orange-400 text-gray-100 hidden group-hover:block'>
+          <div className='relative py-2 group'>
+            <img src={assets.menu_icon} alt="Menu" className='max-h-5 cursor-pointer invert sepia-100 saturate-500 hue-rotate-180' />
+            <div className='absolute top-full right-0 z-20 w-32 p-5 rounded-md bg-orange-100 border border-orange-200 text-gray-700 hidden group-hover:block'>
               <p onClick={() => navigate('/profile')} className='cursor-pointer text-sm'>Edit Profile</p>
               <hr className='my-2 border-t border-orange-500' />
               <p className='cursor-pointer text-sm'>Logout</p>
@@ -22,8 +22,8 @@ const Sidebar = ({ selectedUser, setSelectedUser }) => {
 
         {/* search */}
         <div className='bg-orange-200 rounded-full flex items-center gap-2 px-4 py-3 mt-5'>
-          <img src={assets.search_icon} alt="Search" className='w-3' />
-          <input type="text" className='bg-transparent border-none outline-none text-orange-800 text-xs placeholder-orange-400 flex-1' placeholder='Search User...' />
+          <img src={assets.search_icon} alt="Search" className='w-3 invert sepia-100 saturate-500 hue-rotate-180' />
+          <input type="text" className='bg-transparent border-none outline-none text-orange-800 text-xs placeholder-gray-700 flex-1' placeholder='Search User...' />
         </div>
       </div>
 
